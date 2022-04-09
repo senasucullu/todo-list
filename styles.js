@@ -37,4 +37,31 @@ export const appStyles = StyleSheet.create({
     buttonText:{
         fontSize:18,
     },
+    divider:{
+        height:1,
+        backgroundColor:"#ddd",
+        marginVertical:32,
+    },
+    taskContainer:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        borderBottomWidth:1,
+        borderColor:"#ddd",  
+        paddingVertical:12,
+    },
+    taskText:{
+        fontSize:18,
+    },
+    taskDelete:{
+        width: 63,
+        height: 30,
+        justifyContent:"center",
+        alignItems:"center",
+        backgroundColor:"firebrick",
+        borderRadius:4,
+    },
+    taskDeleteText:{
+        fontSize:18,
+        color:"white",
+    },
 });

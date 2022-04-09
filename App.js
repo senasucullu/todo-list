@@ -1,5 +1,5 @@
 import React , {useState} from "react";
-import {Text, SafeAreaView, View, TextInput,TouchableOpacity} from "react-native";
+import {Text, SafeAreaView, View, TextInput,TouchableOpacity,FlatList} from "react-native";
 import {appStyles, appStyles as styles} from "./styles";
 
 function App (){
@@ -11,7 +11,12 @@ function App (){
     setTask([...task, text]);
     setText("");
   };
-  
+
+  const handleDeleteTaskPress = (index) => {
+    const newTasks = [...task];
+    newTasks.splice(index,1);
+    setTask(newTasks);
+  };
   
   return (
     <SafeAreaView style ={{flex:1}}>
@@ -36,7 +41,19 @@ function App (){
         >
           <Text style={styles.buttonText}>Add Task </Text>
         </TouchableOpacity>
-       
+        <View style={styles.divider}/>
+        <FlatList 
+        data = {task}
+        renderItem= {({ item, index }) => (
+          <View style={styles.taskContainer}>
+            <Text style={styles.taskText}>{item}</Text>
+            <TouchableOpacity style={styles.taskDelete} onPress={() => handleDeleteTaskPress(index) } >
+              <Text style={styles.taskDeleteText}>Delete</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        keyExtractor={(item) => item + Date.now() + Math.random()}
+        />
       </View>
     </SafeAreaView>
   )
